@@ -21,19 +21,20 @@ base de datos y se asigna UserDetails (Objeto usuario implicito de spring securi
 public class UserDetailService implements UserDetailsService {
 
     @Override
-    public UserDetails loadUserByUsername(String itemsCredenciales) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(String usuario) throws UsernameNotFoundException {
 
-        log.info("init loadUserByUsername itemsCredenciales:{}", itemsCredenciales);
+        log.info("init loadUserByUsername usuario:{}", usuario);
 
-        if (StringUtils.isEmpty(itemsCredenciales)) {
+        if (StringUtils.isEmpty(usuario)) {
             throw new IllegalArgumentException("itemsCredenciales no puede nulos");
         }
 
-        String pw = LeeCadena.funLeerItems(itemsCredenciales, Constantes.PW);
+        //con el usuario se onbienen las credeciales de la base datos ejemplo
+        //se llama da la base de datos para otenera la clave de la base de datos con el parametro usuario, la clave de estar encriptada con bycript
+        String pw = "$2a$10$awCDlOc.vf.DaA9sBrbfZutYY2G2KhJxohZU8t9eI7sQ5lDLRlaHa" ;
 
-        log.info("init loadUserByUsername password:{}", pw);
 
-        return new User(itemsCredenciales, pw, Collections.emptyList());
+        return new User(usuario, pw, Collections.emptyList());
 
     }
 
