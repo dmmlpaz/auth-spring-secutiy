@@ -4,9 +4,9 @@
 
 1. Se crea la clase de configuración WebSecurityConfig el método SecurityFilterChain de esta clase es solo configuración de spring security y beans para hacer funcionar el proceso implícitamente , se crean los beans:
 
-    PasswordEncoder: codificación de la clave y validación con Bycript
-    AuthenticationProvider: proveedor de autenticación propio de Spring boot no se tiene control sobre esta logica
-    AuthenticationManager:  Autenticador propio y ejecución implícita de Spring boot no se tiene control sobre esta lógica.
+    - PasswordEncoder: codificación de la clave y validación con Bycript.
+    - AuthenticationProvider: proveedor de autenticación propio de Spring boot no se tiene control sobre esta logica.
+    - AuthenticationManager:  Autenticador propio y ejecución implícita de Spring boot no se tiene control sobre esta lógica.
 
 2. La clase UserDetailService es el que se encarga de obtener los datos de usuario de la base de datos y hacer el match o validación con la clave que vine de la petición de auth o login este es el mecanismo implícito de spring security, esto lo ejecuta implícitamente sring boot el propósito es traer la clave de la base de datos y compararla con la que vino de la petición de auth o login si coincide se crea el token de autenticación y se retorna al cliente.
 
